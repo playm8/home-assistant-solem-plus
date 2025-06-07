@@ -1,0 +1,63 @@
+turn_off_permanent:
+  description: "Turn off the sprinkler permanently."
+  fields:
+    device_mac:
+      description: "Device's MAC address"
+      example: "00:11:22:33:44:55"
+
+turn_off_x_days:
+  description: "Turn off the sprinkler for a specified number of days."
+  fields:
+    device_mac:
+      description: "Device's MAC address"
+      example: "00:11:22:33:44:55"
+    days:
+      description: "Number of days to turn off the sprinkler"
+      example: 1
+
+turn_on:
+  description: "Turn on the sprinkler."
+  fields:
+    device_mac:
+      description: "Device's MAC address"
+      example: "00:11:22:33:44:55"
+
+sprinkle_station:
+  description: "Sprinkle a specific station for a given number of minutes."
+  fields:
+    device_mac:
+      description: "Device's MAC address"
+      example: "00:11:22:33:44:55"
+    station:
+      description: "Station number (starting from 1)"
+      example: 1
+    minutes:
+      description: "Number of minutes to run the sprinkler"
+      example: 10
+
+sprinkle_all:
+  description: "Sprinkle all stations for a given number of minutes."
+  fields:
+    device_mac:
+      description: "Device's MAC address"
+      example: "00:11:22:33:44:55"
+    minutes:
+      description: "Number of minutes to run all stations"
+      example: 15
+
+run_program:
+  description: "Run a specific program by number."
+  fields:
+    device_mac:
+      description: "Device's MAC address"
+      example: "00:11:22:33:44:55"
+    program:
+      description: "Program number to run"
+      example: 1
+
+stop_manual:
+  description: "Stop manual sprinkling (any active manual run)."
+  fields:
+    device_mac:
+      description: "Device's MAC address"
+      example: "00:11:22:33:44:55"
