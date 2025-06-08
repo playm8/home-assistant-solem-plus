@@ -3,11 +3,8 @@
   "name": "Solem Toolkit Plus",
   "version": "0.1.1",
   "iot_class": "local_polling",
-  "bluetooth": [
-  { "manufacturer_id": 1950, "transport": "local" }, 
-  { "manufacturer_id": 89,   "transport": "local" }  
-  ],
+  "bluetooth": [{ "manufacturer_id": 1950 }],
   "config_flow": true,
   "codeowners": ["@playm8"],
-  "requirements": []
+  "requirements": ["bleak>=0.21.1"]
 }
