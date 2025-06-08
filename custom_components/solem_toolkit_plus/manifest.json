@@ -4,10 +4,8 @@
   "version": "0.1.1",
   "iot_class": "local_polling",
   "bluetooth": [
-    {
-      "manufacturer_id": 1950,
-      "transport": "local"
-    }
+  { "manufacturer_id": 1950, "transport": "local" }, 
+  { "manufacturer_id": 89,   "transport": "local" }  
   ],
   "config_flow": true,
   "codeowners": ["@playm8"],
