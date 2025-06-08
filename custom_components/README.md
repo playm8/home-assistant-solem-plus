@@ -1,58 +1,90 @@
-# Home Assistant Solem Toolkit Plus
+# Solem Toolkit Plus – Home Assistant BLE Integration
 
-> **Parallel fork of [hcraveiro/Home-Assistant-Solem-Toolkit](https://github.com/hcraveiro/Home-Assistant-Solem-Toolkit)**  
-> New domain: `solem_toolkit_plus` — can be installed alongside the original!
+[![GitHub license](https://img.shields.io/github/license/playm8/home-assistant-solem-plus)](LICENSE)
 
-Integrate Solem Watering Bluetooth Controllers (tested on BL-IP & LR-IP4) into Home Assistant, **without LoRa gateway** or cloud.  
-This fork brings more robust connection handling, better logging, and soon: full device setup via UI and status feedback.
+> **Inspired by [hcraveiro/Home-Assistant-Solem-Toolkit](https://github.com/hcraveiro/Home-Assistant-Solem-Toolkit) – credit and thanks to [@hcraveiro](https://github.com/hcraveiro) for the original work and BLE protocol insights.**
 
 ---
 
-## 🚀 What's New
+## Description
 
-- New domain: `solem_toolkit_plus` for parallel install.
-- Improved BLE stability: automatic reconnection, retries, clearer error logs.
-- Refactored core logic: central SolemClient class, easier code maintenance.
-- Groundwork for Home Assistant config flow and polling.
-- All credits preserved (see below).
+This custom integration brings native Bluetooth Low Energy (BLE) support for SOLEM irrigation controllers (LR-IP, BL-IP, etc.) to Home Assistant.
+
+You can control watering (on/off), monitor battery level, and benefit from **automatic device discovery** using SOLEM’s official BLE manufacturer ID (`0x079E`, decimal `1950`).
 
 ---
 
-## 🛠️ Installation
+## Features
 
-1. Copy this folder into your Home Assistant `custom_components`.
-2. Restart Home Assistant.
-3. Use services with `solem_toolkit_plus` as domain.
+- **BLE auto-discovery:** Any SOLEM device advertising Company ID `0x079E` is automatically detected, and Home Assistant will suggest integration setup.
+- **Exposes entities:**  
+  - `switch` entity for starting/stopping irrigation
+  - `sensor` entity for battery level (percentage)
+- **Manual setup available:** Add a device by entering its MAC address if needed.
+- **Reliable polling and BLE commands:** For up-to-date status and actions.
+- **All code and documentation in English.**
 
 ---
 
-## ⚡ Services
+## Improvements over the original project
 
-All services are available under the `solem_toolkit_plus` domain.  
-Supported :
+- **Native Home Assistant entities:** Provides `switch` and `sensor` rather than only services.
+- **BLE auto-discovery:** Instantly detects SOLEM devices by Company ID (no more manual scanning required).
+- **English codebase and UI**
+- **Cleaner architecture:** Config Flow, DataUpdateCoordinator pattern, ready for multi-zone/sensor expansion.
+- **Manual installation instructions:** Simple setup for users without HACS.
 
-- `turn_off_permanent`
-- `turn_off_x_days`
-- `turn_on`
-- `sprinkle_station`
-- `sprinkle_all`
-- `run_program`
-- `stop_manual`
+---
 
-_See `services.yaml` for detailed parameters and examples._
+## Requirements
 
-**Example (in Home Assistant UI or automation):**
-```yaml
-service: solem_toolkit_plus.sprinkle_station
-data:
-  device_mac: "00:11:22:33:44:55"
-  station: 1
-  minutes: 10
+- Home Assistant (tested on Core 2024.x+)
+- Compatible Bluetooth adapter (internal or USB)
+- SOLEM BLE controller (LR-IP, BL-IP, etc.)
 
+---
+
+## Installation (manual, without HACS)
+
+1. **Download or clone this repository.**
+
+2. **Copy all files** in `custom_components/solem_toolkit_plus/` to your Home Assistant configuration folder:
+
+
+3. **Restart Home Assistant.**
+
+4. Go to **Settings → Devices & Services → Add Integration**.
+- If your SOLEM controller is powered and broadcasting, Home Assistant will show a “Solem Toolkit Plus discovered” card.
+- Otherwise, select "Solem Toolkit Plus" and enter the device MAC address manually.
+
+---
+
+## Supported Devices
+
+Any SOLEM device broadcasting the manufacturer Company ID:
+- **Manufacturer:** SOLEM Électronique
+- **Company ID:** `0x079E` (1950 decimal)  
+([Bluetooth SIG official database](https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/))
+
+---
 
 ## Credits
 
-- Forked from [hcraveiro/Home-Assistant-Solem-Toolkit](https://github.com/hcraveiro/Home-Assistant-Solem-Toolkit).
-- Special thanks to [pcman75](https://github.com/pcman75) for BLE reverse engineering.
+- **Original BLE research and inspiration:**  
+[hcraveiro/Home-Assistant-Solem-Toolkit](https://github.com/hcraveiro/Home-Assistant-Solem-Toolkit)
+- **Improvements, English refactor, and Home Assistant entity architecture:**  
+[Loïc V (playm8)](https://github.com/playm8)
 
-MIT License (see LICENSE)
+---
+
+## License
+
+MIT License (see [LICENSE](LICENSE) file).
+
+---
+
+## Contribution
+
+Contributions and bug reports are welcome!  
+Please open issues or pull requests.
+

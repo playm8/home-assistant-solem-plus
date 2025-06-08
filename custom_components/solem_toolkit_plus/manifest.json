@@ -1,13 +1,20 @@
 {
   "domain": "solem_toolkit_plus",
   "name": "Solem Toolkit Plus",
-  "version": "1.1.0",
-  "documentation": "https://github.com/playm8/home-assistant-solem-plus",
-  "issue_tracker": "https://github.com/playm8/home-assistant-solem-plus/issues",
-  "dependencies": [],
-  "codeowners": ["@playm8", "@hcraveiro"],
-  "requirements": [
-    "dbus_fast>=2.33.0",
-    "bleak>=0.22.3"
-  ]
+  "version": "0.1.1",
+  "iot_class": "local_polling",
+
+  /* BLE: Home Assistant will auto-discover any BLE advertisement
+     whose Manufacturer Specific Data starts with Company ID 0x079E
+     (decimal 1950 = SOLEM Électronique) */
+  "bluetooth": [
+    {
+      "manufacturer_id": 0x079E,
+      "transport": "local"
+    }
+  ],
+
+  "config_flow": true,
+  "codeowners": ["@your_github"],
+  "requirements": []
 }
