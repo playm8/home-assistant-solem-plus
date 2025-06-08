@@ -3,18 +3,13 @@
   "name": "Solem Toolkit Plus",
   "version": "0.1.1",
   "iot_class": "local_polling",
-
-  /* BLE: Home Assistant will auto-discover any BLE advertisement
-     whose Manufacturer Specific Data starts with Company ID 0x079E
-     (decimal 1950 = SOLEM Électronique) */
   "bluetooth": [
     {
-      "manufacturer_id": 0x079E,
+      "manufacturer_id": 1950,
       "transport": "local"
     }
   ],
-
   "config_flow": true,
-  "codeowners": ["@your_github"],
+  "codeowners": ["@playm8"],
   "requirements": []
 }

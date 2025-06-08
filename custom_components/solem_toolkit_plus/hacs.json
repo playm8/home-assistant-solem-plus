@@ -1,4 +1,7 @@
 {
   "name": "Solem Toolkit Plus",
-  "render_readme": true
+  "country": "FR",
+  "categories": ["integration"],
+  "domain": "solem_toolkit_plus",
+  "homeassistant": "2024.0.0"
 }
